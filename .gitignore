@@ -1,0 +1,9 @@
+node_modules/
+*.log
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*.xlsx
+heiyan-idea-app/public/data/ideas.json

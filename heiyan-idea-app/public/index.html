@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>黑岩灵感生成器</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero-panel">
+        <div class="hero-copy">
+          <p class="eyebrow">本地离线 · 双击就开 · 不用学命令行</p>
+          <h1>黑岩灵感生成器</h1>
+
+          <div class="hero-pills">
+            <span class="info-pill" id="dataCountPill">素材池读取中...</span>
+            <span class="info-pill" id="modeHintPill">当前模式：现成素材</span>
+          </div>
+        </div>
+
+        <div class="hero-controls">
+          <div class="mode-switch" role="tablist" aria-label="生成模式切换">
+            <button class="mode-btn is-active" type="button" data-mode="existing">
+              现成素材
+            </button>
+            <button class="mode-btn" type="button" data-mode="remix">
+              混搭灵感
+            </button>
+          </div>
+
+          <div class="action-row">
+            <button class="primary-btn" id="generateBtn" type="button">生成10条</button>
+            <button class="secondary-btn" id="rerollBtn" type="button">再来10条</button>
+            <button class="ghost-btn" id="copyAllBtn" type="button">复制全部</button>
+          </div>
+
+          <section class="note-card">
+            <p class="note-title">模式说明</p>
+            <p class="note-text" id="modeDescription">
+              随机抽 10 条已有素材，优先高/中置信，适合直接回看噱头。
+            </p>
+            <p class="note-subtext" id="modeSubDescription">
+              复制后是四段式纯文本，可以直接贴到文档里继续拆。
+            </p>
+          </section>
+        </div>
+      </header>
+
+      <main class="content-area">
+        <section class="result-bar">
+          <div>
+            <p class="result-label" id="resultTitle">现成素材 · 10 张灵感卡</p>
+            <p class="result-subline" id="resultSubline">
+              每次尽量避开重复，方便你连续刷新找感觉。
+            </p>
+          </div>
+          <p class="last-updated" id="lastUpdated">等待生成</p>
+        </section>
+
+        <section class="cards-grid" id="cardsGrid" aria-live="polite"></section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" hidden></div>
+
+    <template id="cardTemplate">
+      <article class="idea-card">
+        <div class="card-head">
+          <span class="card-badge"></span>
+          <button class="copy-one-btn" type="button">复制这条</button>
+        </div>
+
+        <p class="card-title"></p>
+
+        <div class="field-list">
+          <section class="field-block">
+            <p class="field-label title-label"></p>
+            <p class="field-value display-title"></p>
+          </section>
+
+          <section class="field-block">
+            <p class="field-label">主噱头短语</p>
+            <p class="field-value main-hook"></p>
+          </section>
+
+          <section class="field-block">
+            <p class="field-label">短语噱头列表</p>
+            <p class="field-value phrase-hooks"></p>
+          </section>
+
+          <section class="field-block">
+            <p class="field-label">拆分噱头词</p>
+            <p class="field-value word-hooks"></p>
+          </section>
+
+          <section class="field-block source-block" hidden>
+            <p class="field-label">灵感来源</p>
+            <p class="field-value source-refs"></p>
+          </section>
+        </div>
+      </article>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
